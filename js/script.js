@@ -52,6 +52,15 @@ let listarFilmes = async (filmes) => {
     }
 }
 
+let btnSalvar = document.createElement('button');
+btnSalvar.appendChild(document.createTextNode('Salvar'));
+btnSalvar.setAttribute('id', 'btnSalvar');
+divDetalhes.appendChild(btnSalvar);
+
+let btnFechar = document.createElement('button');
+btnSalvar.appendChild(document.createTextNode('Fechar'));
+btnFechar.setAttribute('id', 'btnFechar');
+divDetalhes.appendChild(btnFechar);
 
 let detalhesFilme = async (id) =>{
   fetch("http://www.omdbapi.com/?i=tt3896198&apikey=d8c7cc21&i="+id)
@@ -71,7 +80,11 @@ let detalhesFilme = async (id) =>{
         resp.Awards,
         resp.imdbRating
       )
+      console.log(filme);
       document.querySelector("#mostrar-filme").appendChild(filme.getDetalhesFilme());
+
+      document.querySelector("btnFechar").onclick = () => {
+      }
       document.querySelector("#lista-filme").style.display="none";
       document.querySelector("#mostrar-filme").style.display="flex";
   });
